@@ -10,7 +10,7 @@
  and your kernel version is greater than 5.8.
 #endif
 
-#define INIT_PACING_RATE 125000 // 1 Mbps
+#define INIT_PACING_RATE 62500000 // 500 Mbps
 #define INIT_CWND_GAIN 20
 
 #define MIN_PACING_RATE 62500 // 500 Kbps
