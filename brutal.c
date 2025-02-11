@@ -88,8 +88,8 @@ static int brutal_set_params(struct sock *sk, char __user *optval, unsigned int 
     struct brutal *brutal = inet_csk_ca(sk);
     struct brutal_params params;
 
-    brutal->rate = 46000000 // 46 MB/s ~ 368 Mbps
-    brutal->cwnd_gain = 15 // 15 for 150%, 20 for 200%
+    brutal->rate = 46000000; // 46 MB/s ~ 368 Mbps
+    brutal->cwnd_gain = 15; // 15 for 150%, 20 for 200%
     return 0;
     
     if (optlen < sizeof(params))
