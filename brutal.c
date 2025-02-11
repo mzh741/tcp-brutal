@@ -11,10 +11,10 @@
  and your kernel version is greater than 5.8.
 #endif
 
-#define INIT_PACING_RATE 62500000 // 500 Mbps
+#define INIT_PACING_RATE 18750000 // 150 Mbps
 #define INIT_CWND_GAIN 20
 
-#define MIN_PACING_RATE 62500 // 500 Kbps
+#define MIN_PACING_RATE 125000 // 1000 Kbps ~ 1Mbps
 #define MIN_CWND_GAIN 5
 #define MAX_CWND_GAIN 80
 #define MIN_CWND 4
@@ -30,7 +30,7 @@
 #endif
 
 #define MIN_PKT_INFO_SAMPLES 50
-#define MIN_ACK_RATE_PERCENT 80
+#define MIN_ACK_RATE_PERCENT 75 // Allow Max Loss Percent
 
 #define TCP_BRUTAL_PARAMS 23301
 
@@ -88,6 +88,10 @@ static int brutal_set_params(struct sock *sk, char __user *optval, unsigned int 
     struct brutal *brutal = inet_csk_ca(sk);
     struct brutal_params params;
 
+    brutal->rate = 46000000 // 46 MB/s ~ 368 Mbps
+    brutal->cwnd_gain = 15 // 15 for 150%, 20 for 200%
+    return 0;
+    
     if (optlen < sizeof(params))
         return -EINVAL;
 
